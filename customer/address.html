@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Adreslerim | E-TİCARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background: linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html"><i></i>E-TİCARET</a>
+            <div class="ms-auto">
+                <a href="../index.html" class="btn btn-outline-light btn-sm">Alışverişe Dön</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row">
+             <div class="col-md-3 mb-4">
+                <div class="list-group shadow-sm rounded-4">
+                    <a href="dashboard.html" class="list-group-item list-group-item-action"><i class="fas fa-home me-2"></i> Özet</a>
+                    <a href="profile.html" class="list-group-item list-group-item-action"><i class="fas fa-user-circle me-2"></i> Profil</a>
+                    <a href="address.html" class="list-group-item list-group-item-action active bg-dark border-0"><i class="fas fa-map-marker-alt me-2"></i> Adreslerim</a>
+                    <a href="orders.html" class="list-group-item list-group-item-action"><i class="fas fa-box-open me-2"></i> Siparişlerim</a>
+                    <a href="#" onclick="logoutUser()" class="list-group-item list-group-item-action text-danger"><i class="fas fa-sign-out-alt me-2"></i> Çıkış</a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <h4 class="mb-4">Kayıtlı Adreslerim</h4>
+                
+                <div class="card mb-4 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h6 class="card-title fw-bold"><i class="fas fa-home me-2 text-primary"></i>Ev Adresim</h6>
+                        <p class="card-text text-muted">Örnek Mahallesi, Papatya Sokak, No: 12, Daire: 5<br>Kadıköy / İstanbul</p>
+                        <button class="btn btn-sm btn-outline-secondary">Düzenle</button>
+                        <button class="btn btn-sm btn-outline-danger">Sil</button>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Yeni Adres Ekle</h5>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Adres Başlığı</label>
+                                    <input type="text" class="form-control" placeholder="Örn: İş Yeri">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Şehir</label>
+                                    <select class="form-select">
+                                        <option>İstanbul</option>
+                                        <option>Ankara</option>
+                                        <option>İzmir</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Açık Adres</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+         function logoutUser() {
+            localStorage.removeItem("currentUser");
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>

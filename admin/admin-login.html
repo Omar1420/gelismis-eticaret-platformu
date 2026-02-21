@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | E-TİCARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Split Screen Tasarımı */
+        .login-section { min-height: 100vh; }
+        .login-image {
+            background: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1000&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .login-image::before {
+            content: "";
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 32, 39, 0.4), rgba(44, 83, 100, 0.6));
+        }
+        .login-content { display: flex; align-items: center; justify-content: center; background-color: #fff; }
+        .form-box { width: 100%; max-width: 400px; padding: 20px; }
+        .brand-title { color: #203a43; font-weight: 800; letter-spacing: -1px; }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row login-section">
+            <div class="col-lg-7 d-none d-lg-block login-image">
+                <div class="d-flex h-100 flex-column justify-content-center text-white p-5 position-relative">
+                    <h1 class="display-3 fw-bold mb-3">Teknolojiye<br>Yön Ver.</h1>
+                    <p class="lead">NovaMarket ile en yeni ürünlere en hızlı şekilde ulaşın.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-5 login-content">
+                <div class="form-box">
+                    <div class="text-center mb-5">
+                        <h2 class="brand-title">Yönetici Girişi</h2>
+                        <p class="text-muted">Hesabınıza giriş yapın</p>
+                    </div>
+
+                    <form id="loginForm" novalidate>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                            <label for="email">E-Posta Adresi</label>
+                        </div>
+                        
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" placeholder="Şifre" required minlength="6">
+                            <label for="password">Şifre</label>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-light rounded border">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="small text-muted fw-bold">Güvenlik Kodu</span>
+                                <a href="#" onclick="refreshCaptcha()" class="text-decoration-none small">Yenile</a>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div id="captcha-display" class="bg-white border px-3 py-2 fw-bold text-secondary text-decoration-line-through font-monospace rounded flex-grow-1 text-center"></div>
+                                <input type="text" class="form-control" id="captchaInput" placeholder="Kodu Girin" required style="width: 120px;">
+                            </div>
+                            <div class="invalid-feedback d-block" id="captchaError" style="display:none !important">Kod hatalı!</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100 py-3 fw-bold rounded-3 shadow-sm">Giriş Yap</button>
+
+                        <div class="alert alert-info mt-4 small border-0 shadow-sm bg-light-subtle text-dark">
+                            <h6 class="fw-bold mb-2"><i class="fas fa-info-circle me-1"></i> Demo Hesap Bilgileri:</h6>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span><i class="fas fa-user-shield me-1"></i> <strong>Admin:</strong></span>
+                                <span class="font-monospace">admin@nova.com / 123456</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-user me-1"></i> <strong>Müşteri:</strong></span>
+                                <span class="font-monospace">user@nova.com / 123456</span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <span class="text-muted">Hesabın yok mu?</span>
+                            <a href="register.html" class="fw-bold text-primary text-decoration-none ms-1">Hemen Kayıt Ol</a>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                             <a href="index.html" class="small text-muted text-decoration-none"><i class="fas fa-arrow-left me-1"></i> Anasayfaya Dön</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/captcha.js"></script>
+    <script src="js/validation.js"></script>
+</body>
+<body>
+    <button class="admin-toggle-btn shadow" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    ```
+
+### 4. Adım: HTML Dosyalarına Bağlantı Yap
+
+Son olarak, **tüm HTML dosyalarının (Frontend)** `<head>` kısmına `responsive.css` dosyasını `style.css`'ten **SONRA** ekle. Sıralama önemli!
+
+```html
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorilerim | E-TİCARET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-deep">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold gold-text" href="index.html">E-TİCARET</a>
+            <div class="ms-auto">
+                <a href="product-list.html" class="btn btn-outline-light btn-sm rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i>Mağazaya Dön
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="account-sidebar list-group shadow-lg rounded-4 overflow-hidden">
+                    <div class="p-4 bg-card text-center border-bottom border-secondary border-opacity-25">
+                         <div class="width-80 height-80 rounded-circle bg-dark border border-gold d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-user fa-2x gold-text"></i>
+                        </div>
+                        <h6 class="text-white fw-bold mb-0">Hesabım</h6>
+                    </div>
+                    <a href="customer/profile.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-circle me-3"></i>Profil Bilgileri
+                    </a>
+                    <a href="customer/orders.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-box-open me-3"></i>Siparişlerim
+                    </a>
+                    <a href="favorites.html" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-heart me-3"></i>Favorilerim
+                    </a>
+                    <a href="#" onclick="logoutUser()" class="list-group-item list-group-item-action text-danger mt-3 border-top border-secondary border-opacity-25">
+                        <i class="fas fa-sign-out-alt me-3"></i>Çıkış Yap
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h4 class="text-white fw-bold mb-0">Favori Listem</h4>
+                    <span class="badge bg-gold text-dark rounded-pill" id="fav-count-badge">0 Ürün</span>
+                </div>
+
+                <div class="row g-4" id="favorites-container">
+                    </div>
+
+                <div id="no-favorites" class="text-center py-5 rounded-4 bg-card border border-secondary border-opacity-25" style="display: none;">
+                    <div class="mb-3">
+                        <i class="far fa-heart fa-4x gold-text opacity-25"></i>
+                    </div>
+                    <h4 class="text-white">Listeniz boş.</h4>
+                    <p class="text-muted">Beğendiğiniz ürünleri kalp ikonuna tıklayarak buraya ekleyebilirsiniz.</p>
+                    <a href="product-list.html" class="btn btn-primary rounded-pill px-5 mt-3">Keşfet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script> 
+    <script src="js/cart.js"></script> 
+    <script>
+        function logoutUser() {
+            localStorage.removeItem("currentUser");
+            window.location.href = "index.html";
+        }
+
+        // Sayfaya özel render fonksiyonu
+        function renderFavoritesPage() {
+            const container = document.getElementById("favorites-container");
+            const emptyMsg = document.getElementById("no-favorites");
+            const countBadge = document.getElementById("fav-count-badge");
+            
+            const favIds = getFavorites();
+
+            if (favIds.length === 0) {
+                container.style.display = 'none';
+                emptyMsg.style.display = 'block';
+                if(countBadge) countBadge.innerText = "0 Ürün";
+                return;
+            }
+
+            container.style.display = 'flex';
+            emptyMsg.style.display = 'none';
+            if(countBadge) countBadge.innerText = `${favIds.length} Ürün`;
+
+            // Ürünleri bul
+            const favProducts = products.filter(p => favIds.includes(p.id));
+
+            container.innerHTML = favProducts.map(product => `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 product-card border-0 bg-card rounded-4 overflow-hidden position-relative">
+                        <button onclick="toggleFavorite(${product.id})" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-3 rounded-circle shadow" style="width:35px; height:35px; z-index:10;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <img src="${product.img}" class="card-img-top" style="height: 200px; object-fit: cover; filter: brightness(0.9);">
+                        <div class="card-body">
+                            <h6 class="card-title text-white fw-bold text-truncate">${product.name}</h6>
+                            <p class="text-gold fw-bold mb-3">${product.price.toLocaleString('tr-TR')} TL</p>
+                            <div class="d-grid">
+                                <a href="product-detail.html?id=${product.id}" class="btn btn-outline-light btn-sm rounded-pill">Ürüne Git</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderFavoritesPage();
+        });
+    </script>
+</body>
+</html>

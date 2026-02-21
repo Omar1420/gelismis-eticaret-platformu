@@ -1,0 +1,803 @@
+:root {
+    --bg-deep: #050505;
+    --bg-card: #111111;
+    --gold: #c5a059;
+    --gold-bright: #f1c40f;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--bg-deep) !important;
+    color: var(--text-main) !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(5, 5, 5, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+    letter-spacing: 3px;
+    color: var(--gold) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=1600');
+    background-size: cover;
+    background-position: center;
+}
+
+.gold-text { color: var(--gold); }
+.fw-800 { font-weight: 800; }
+
+/* Stats Row */
+.stats-row {
+    background: var(--bg-card);
+    margin-top: -50px;
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+/* --- Premium Kategori Kartları --- */
+.premium-cat-card {
+    position: relative;
+    display: block;
+    height: 350px;
+    border-radius: 25px;
+    overflow: hidden;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cat-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cat-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) saturate(1.2);
+    transition: all 0.7s ease;
+}
+
+/* Glassmorphism İçerik Alanı */
+.cat-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.5s ease;
+}
+
+.cat-count {
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.cat-content h3 {
+    color: white;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.cat-action {
+    color: white;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+/* Hover (Üzerine Gelme) Efektleri */
+.premium-cat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
+    border-color: var(--gold);
+}
+
+.premium-cat-card:hover .cat-image-wrapper img {
+    transform: scale(1.15);
+    filter: brightness(0.4); /* Resim hafif kararır yazı parlar */
+}
+
+.premium-cat-card:hover .cat-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cat-action i {
+    transition: transform 0.3s ease;
+}
+
+.premium-cat-card:hover .cat-action i {
+    transform: translateX(5px);
+}
+/* Premium Product Cards */
+.product-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 20px !important;
+    transition: 0.4s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.btn-primary {
+    background: var(--gold) !important;
+    border: none !important;
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.btn-gold { color: var(--gold); border: 1px solid var(--gold); }
+/* Filtre Sidebar Tasarımı */
+.filter-sidebar {
+    background: var(--bg-card);
+}
+
+.filter-sidebar .list-group-item {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-muted) !important;
+    padding: 12px 0;
+    transition: 0.3s;
+}
+
+.filter-sidebar .list-group-item:hover, 
+.filter-sidebar .list-group-item.active {
+    color: var(--gold) !important;
+    padding-left: 10px;
+}
+
+/* Detay Sayfası Özel Görünüm */
+.detail-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-image-wrapper img {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-muted);
+}
+
+.bg-card {
+    background-color: var(--bg-card) !important;
+}
+
+/* Hover Zoom Efekti */
+.hover-zoom {
+    transition: transform 0.5s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+}
+
+/* Sepet ve Favori Butonları */
+.btn-primary.rounded-pill {
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+.btn-primary.rounded-pill:hover {
+    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.5);
+    transform: translateY(-2px);
+}
+/* --- Slider (Carousel) Özel Tasarımı --- */
+
+/* Slider genel yüksekliği ve arka planı */
+.carousel-item {
+    height: 75vh; /* Sayfanın %75'ini kaplar */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Slider üzerindeki metin alanı (Caption) */
+.carousel-caption {
+    bottom: 25%; /* Yazıları biraz daha yukarı çeker */
+    padding: 40px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5); /* Yazıların okunması için hafif karartma */
+    backdrop-filter: blur(10px); /* Cam efekti */
+    border: 1px solid var(--border);
+    max-width: 700px;
+    margin: 0 auto; /* Ortalar */
+}
+
+/* Slider Başlık ve Metinleri */
+.carousel-caption h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    opacity: 0.9;
+    margin-bottom: 25px;
+}
+
+/* Alt kısımdaki çizgi göstergeler (Indicators) */
+.carousel-indicators [data-bs-target] {
+    width: 40px;
+    height: 4px;
+    background-color: var(--gold); /* Altın rengi göstergeler */
+    border-radius: 2px;
+}
+
+/* Slider kontrol butonları (Sağ-Sol oklar) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg); /* Okları altın rengine yaklaştırır */
+}
+
+/* Mobilde slider görünümü */
+@media (max-width: 768px) {
+    .carousel-item { height: 50vh; }
+    .carousel-caption {
+        padding: 20px;
+        bottom: 10%;
+    }
+    .carousel-caption h1 { font-size: 1.8rem; }
+}
+/* --- Ürün Listesi Sidebar --- */
+.sidebar-premium {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.sidebar-premium .list-group-item {
+    background: transparent !important;
+    color: #888 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    padding: 15px 10px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.sidebar-premium .list-group-item:hover,
+.sidebar-premium .list-group-item.active {
+    color: var(--gold) !important;
+    padding-left: 15px;
+    background: rgba(197, 160, 89, 0.05) !important;
+}
+
+/* --- Favori Butonu Tasarımı --- */
+.btn-fav-round {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.btn-fav-round:hover {
+    background: var(--gold);
+    color: black;
+}
+
+/* --- Hover Zoom Efekti --- */
+.hover-zoom {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover .hover-zoom {
+    transform: scale(1.1);
+}
+/* Ürün Kataloğu (Header) altındaki açıklama yazısı */
+header.py-5.bg-card p.text-muted {
+    color: #e0e0e0 !important; /* Saf beyaza yakın, yumuşak gri tonu */
+    opacity: 1 !important; /* Şeffaflığı kaldırarak yazıyı netleştirdik */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Başlık rengini de altın tonuyla sabitleyelim */
+header.py-5.bg-card h1.gold-text {
+    color: #d4af37 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+/* --- SEPET SAYFASI EKLEMELERİ --- */
+
+/* Kupon Input Alanı */
+.input-group .form-control:focus {
+    border-color: var(--gold) !important;
+    box-shadow: none !important;
+}
+
+/* Tablo Çizgileri */
+.table-dark td, .table-dark th {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Font Monospace (Tablo Başlıkları İçin) */
+.font-monospace {
+    font-family: 'Courier New', Courier, monospace !important;
+    letter-spacing: 1px;
+}
+
+/* Sticky Sidebar (Özet Paneli) */
+.sticky-top {
+    z-index: 1020; /* Navbar'ın altında kalması için */
+}
+
+/* Hover Effect Buton */
+.hover-effect:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3) !important;
+}
+
+/* Kargo Alanı İkonu */
+.fa-truck-fast {
+    text-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+}
+/* --- SEPET SAYFASI GÖRÜNÜRLÜK DÜZELTMELERİ --- */
+
+/* 1. Kargo Uyarısı içindeki sönük yazıyı parlatma */
+.alert small.text-muted {
+    color: #e0e0e0 !important; /* Neredeyse beyaz */
+    opacity: 1 !important;      /* Şeffaflığı kaldır */
+    font-weight: 400;
+}
+
+/* 2. Sipariş Özeti Kartındaki Gri Yazılar (Ara Toplam, Kargo vb.) */
+.card .text-muted {
+    color: #cccccc !important; /* Açık gümüş rengi */
+}
+
+/* 3. İndirim Kuponu Alanı */
+.card label.text-muted {
+    color: #ffffff !important; /* "İndirim Kuponu" başlığı net beyaz */
+}
+
+/* Input içine yazılan yazı ve placeholder rengi */
+.input-group .form-control {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05) !important; /* Hafif şeffaf arka plan */
+}
+
+.input-group .form-control::placeholder {
+    color: #aaaaaa !important; /* "Kupon Kodu" yazısı okunur gri */
+}
+
+/* Tablo içindeki ürün açıklama metinleri */
+.table .text-muted {
+    color: #b0b0b0 !important;
+}
+/* --- Ürün Detay Sayfası Ekstraları --- */
+
+/* Görsel Kutusu */
+.detail-image-wrapper {
+    background: radial-gradient(circle at center, #1a1c1e 0%, #0c0c0c 100%) !important; /* Hafif spot ışığı efekti */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.detail-image-wrapper:hover {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 30px rgba(219, 172, 51, 0.15) !important;
+}
+
+/* Altın Gölge Efekti (Buton İçin) */
+.shadow-gold {
+    box-shadow: 0 10px 30px rgba(219, 172, 51, 0.3) !important;
+    transition: transform 0.2s;
+}
+
+.shadow-gold:active {
+    transform: scale(0.98);
+}
+
+/* Küçük Yazılar */
+.x-small {
+    font-size: 0.75rem;
+}
+
+/* Özellik İkonları Hover */
+.col-4:hover i {
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+
+/* Breadcrumb Divider Rengi */
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.3);
+}
+/* --- PREMIUM LOGIN TASARIMI --- */
+
+/* Genel Yükseklik ve Arka Plan */
+.login-section {
+    min-height: 100vh;
+    background-color: var(--bg-deep);
+}
+
+/* Sol Taraf Görsel */
+.login-image {
+    background: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600') no-repeat center center;
+    background-size: cover;
+}
+
+.overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(12, 12, 12, 0.6) 100%);
+}
+
+.tracking-wide {
+    letter-spacing: 3px;
+}
+
+/* Sağ Taraf Form Alanı */
+.form-box {
+    max-width: 500px;
+    z-index: 10;
+}
+
+/* Input Alanları Özelleştirme */
+.form-floating > .form-control {
+    background-color: #16181a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 12px;
+}
+
+.form-floating > label {
+    color: #888 !important;
+}
+
+.form-control:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.15) !important;
+    background-color: #1a1c1e !important;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--gold) !important;
+    font-weight: 600;
+}
+
+/* Captcha Alanı */
+.captcha-box {
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Hafif doku */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Arka Plan Glow Efekti (Sağ taraf için) */
+.glow-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--gold);
+    filter: blur(150px);
+    opacity: 0.1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Animasyonlar */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-underline:hover {
+    text-decoration: underline !important;
+}
+/* --- HESABIM SAYFALARI (Profil, Sipariş, Favori) --- */
+
+/* Sol Menü (Sidebar) */
+.account-sidebar .list-group-item {
+    background-color: var(--bg-card) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #a0a0a0 !important;
+    padding: 15px 20px;
+    transition: 0.3s;
+}
+
+.account-sidebar .list-group-item:hover {
+    background-color: rgba(219, 172, 51, 0.05) !important;
+    color: var(--gold) !important;
+    padding-left: 25px; /* Hover'da kayma efekti */
+}
+
+.account-sidebar .list-group-item.active {
+    background-color: var(--gold) !important;
+    color: #000 !important;
+    font-weight: 700;
+    border-color: var(--gold) !important;
+}
+
+/* Profil Form Alanları */
+.profile-input {
+    background-color: rgba(0,0,0,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: white !important;
+}
+
+.profile-input:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 10px rgba(219, 172, 51, 0.1) !important;
+}
+
+.profile-input[readonly] {
+    background-color: rgba(0,0,0,0.4) !important;
+    color: #888 !important;
+}
+/* --- Ödeme Sayfası Özelleştirmeleri --- */
+
+/* Gri ödeme logoları */
+.grayscale {
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.grayscale:hover {
+    filter: grayscale(0%);
+    opacity: 1 !important;
+}
+
+/* Kart Header Gradyanı */
+.bg-gold.bg-opacity-10 {
+    background-color: rgba(219, 172, 51, 0.1) !important;
+}
+
+/* Küçük ürün görseli */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Form alanları focus rengi zaten style.css içinde var ama burada garantiye alalım */
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 0.25rem rgba(219, 172, 51, 0.15) !important;
+}
+/* --- PREMIUM SLIDER CSS --- */
+
+/* 1. Slider Yüksekliği ve Geçişler */
+.carousel-item {
+    height: 90vh; /* Ekranın %90'ını kaplar */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* 2. Yazı Alanı Konumlandırma */
+.premium-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    left: 0;
+    right: auto;
+    width: 100%;
+    max-width: 800px; /* Genişlik sınırı */
+    padding-left: 1rem; /* Container hizası için */
+}
+
+/* 3. Altın Text Gradyanı (Metalik Efekt) */
+.gold-text-gradient {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* 4. Tipografi ve Detaylar */
+.tracking-wide {
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+}
+
+.text-gray-300 {
+    color: #d1d5db !important;
+    font-weight: 300;
+}
+
+/* 5. Buton Hover Efekti */
+.hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* 6. Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 70vh; /* Mobilde biraz daha kısa */
+    }
+    .display-1 {
+        font-size: 3rem; /* Mobilde başlık boyutu */
+    }
+    .premium-caption {
+        padding-left: 0;
+        text-align: center !important; /* Mobilde ortala */
+    }
+    .premium-caption p {
+        border-left: none !important; /* Mobilde yan çizgiyi kaldır */
+        padding-left: 0 !important;
+    }
+    .d-flex.gap-3 {
+        justify-content: center; /* Butonları ortala */
+    }
+}
+/* --- ULTIMATE CAMPAIGN SLIDER CSS --- */
+
+/* 1. Slider Konteyner ve Yükseklik */
+.carousel-item {
+    height: 90vh; /* Tam ekrana yakın yükseklik */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 2. Hareketli Arka Plan (Zoom Efekti) */
+.slider-bg-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: zoomEffect 20s infinite alternate linear; /* Yavaşça yaklaş ve uzaklaş */
+}
+
+@keyframes zoomEffect {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+}
+
+/* 3. Gelişmiş Karanlık Katman (Merkez Odaklı) */
+.slider-overlay {
+    position: absolute;
+    inset: 0;
+    /* Ortası daha aydınlık, kenarlar daha karanlık radyal gradyan */
+    background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+}
+
+/* 4. Merkezi İçerik Alanı */
+.centro-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 5. Tipografi Detayları */
+.fw-900 { font-weight: 900; }
+.tracking-wider { letter-spacing: 3px; }
+.mw-600 { max-width: 600px; }
+
+/* Metalik Altın Yazı */
+.gold-gradient-text {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 30px rgba(255, 215, 0, 0.4);
+}
+
+/* 6. Giriş Animasyonları (Yazıların sırayla gelmesi) */
+.carousel-item.active .fade-down-1 { animation: fadeDown 0.8s ease-out 0.2s both; }
+.carousel-item.active .fade-down-2 { animation: fadeDown 0.8s ease-out 0.4s both; }
+.carousel-item.active .fade-down-3 { animation: fadeDown 0.8s ease-out 0.6s both; }
+.carousel-item.active .fade-up { animation: fadeUp 0.8s ease-out 0.8s both; }
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. Gösterge Çizgileri */
+.custom-indicator {
+    width: 40px !important;
+    height: 4px !important;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.3) !important;
+    border: none !important;
+    margin: 0 5px !important;
+    transition: 0.3s;
+}
+.custom-indicator.active {
+    background-color: var(--gold) !important;
+    width: 60px !important;
+}
+
+/* Mobil Düzenleme */
+@media (max-width: 768px) {
+    .carousel-item { height: 75vh; }
+    .display-2 { font-size: 2.5rem; }
+    .centro-caption { padding: 0 20px; }
+}

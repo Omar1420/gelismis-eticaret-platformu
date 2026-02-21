@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme | E-TİCARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-deep">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold gold-text" href="index.html">E-TİCARET</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <span class="text-white small d-none d-md-block"><i class="fas fa-lock text-gold me-2"></i>Güvenli Ödeme Sayfası</span>
+                <a href="cart.html" class="btn btn-outline-light btn-sm rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i>Sepete Dön
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                
+                <div class="card bg-card border border-secondary border-opacity-25 shadow-lg rounded-4 mb-4">
+                    <div class="card-header bg-transparent border-bottom border-secondary border-opacity-25 py-3">
+                        <h5 class="mb-0 fw-bold text-white"><i class="fas fa-map-marker-alt gold-text me-2"></i>Teslimat Bilgileri</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="checkoutForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label text-muted small fw-bold">AD</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label text-muted small fw-bold">SOYAD</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-muted small fw-bold">E-POSTA</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-dark border-secondary text-secondary"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" placeholder="ornek@site.com" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-muted small fw-bold">ADRES</label>
+                                    <textarea class="form-control" rows="2" placeholder="Mahalle, Cadde, Sokak, Bina No..." required></textarea>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-label text-muted small fw-bold">ÜLKE</label>
+                                    <select class="form-select" required>
+                                        <option value="">Seçiniz...</option>
+                                        <option>Türkiye</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label text-muted small fw-bold">ŞEHİR</label>
+                                    <select class="form-select" required>
+                                        <option value="">Seçiniz...</option>
+                                        <option>İstanbul</option>
+                                        <option>Ankara</option>
+                                        <option>İzmir</option>
+                                        <option>Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label text-muted small fw-bold">POSTA KODU</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                <div class="card bg-card border border-secondary border-opacity-25 shadow-lg rounded-4">
+                    <div class="card-header bg-transparent border-bottom border-secondary border-opacity-25 py-3">
+                        <h5 class="mb-0 fw-bold text-white"><i class="fas fa-credit-card gold-text me-2"></i>Ödeme Yöntemi</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row gy-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-bold">KART ÜZERİNDEKİ İSİM</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-secondary text-secondary"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-bold">KART NUMARASI</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-secondary text-secondary"><i class="fas fa-credit-card"></i></span>
+                                    <input type="text" class="form-control" placeholder="0000 0000 0000 0000" required minlength="16" maxlength="19">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-bold">SON KULLANMA (AY/YIL)</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-bold">CVV</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="123" required maxlength="3">
+                                    <span class="input-group-text bg-dark border-secondary text-secondary"><i class="fas fa-question-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 rounded-3 bg-dark border border-secondary border-opacity-25">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="small text-gold fw-bold">Güvenlik Doğrulaması</span>
+                                <button type="button" class="btn btn-sm btn-link text-white text-decoration-none" onclick="refreshCaptcha()">
+                                    <i class="fas fa-sync-alt me-1"></i>Yenile
+                                </button>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div id="captcha-display" class="bg-black border border-secondary rounded px-3 py-2 text-white fw-bold font-monospace flex-grow-1 text-center user-select-none" style="letter-spacing: 4px;"></div>
+                                <input type="text" class="form-control text-center fw-bold" id="captchaInput" placeholder="KOD" required style="width: 100px;">
+                            </div>
+                            <div class="invalid-feedback d-block mt-2 text-center text-danger small" id="captchaError" style="display:none !important">
+                                <i class="fas fa-times-circle me-1"></i>Hatalı Kod!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card bg-card border border-gold border-opacity-50 shadow-lg rounded-4 sticky-top" style="top: 100px; z-index: 10;">
+                    <div class="card-header bg-gold bg-opacity-10 border-bottom border-gold border-opacity-25 py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 fw-bold text-gold">Sipariş Özeti</h5>
+                            <span class="badge bg-gold text-dark rounded-pill" id="checkout-count">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush" id="checkout-items">
+                            </ul>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-top border-secondary border-opacity-25 p-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Ara Toplam</span>
+                            <span class="text-white fw-bold" id="checkout-subtotal">0 TL</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="text-muted">Kargo</span>
+                            <span class="text-success fw-bold">Ücretsiz</span>
+                        </div>
+                        <hr class="border-secondary opacity-50">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="fs-5 fw-bold text-white">Toplam</span>
+                            <span class="fs-3 fw-bold text-gold" id="checkout-total">0 TL</span>
+                        </div>
+
+                        <button class="btn btn-primary w-100 py-3 rounded-3 shadow-gold fw-bold fs-5" type="submit">
+                            Ödemeyi Onayla <i class="fas fa-check-circle ms-2"></i>
+                        </button>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted d-block mb-1"><i class="fas fa-shield-alt me-1"></i>256-bit SSL ile korunmaktadır</small>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png" height="20" class="opacity-50 grayscale mx-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" height="20" class="opacity-50 grayscale mx-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" height="15" class="opacity-50 grayscale mx-1">
+                        </div>
+                    </div>
+                </div>
+                </form> </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/captcha.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // 1. GÜVENLİK KONTROLÜ
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (!currentUser) {
+            window.location.href = "login.html";
+        }
+
+        // 2. SEPET VERİLERİNİ ÇEK
+        document.addEventListener("DOMContentLoaded", () => {
+            if(typeof checkLoginStatus === "function") checkLoginStatus();
+
+            const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+            const itemList = document.getElementById("checkout-items");
+            const totalEl = document.getElementById("checkout-total");
+            const subtotalEl = document.getElementById("checkout-subtotal");
+            const countEl = document.getElementById("checkout-count");
+
+            if (cart.length === 0) {
+                alert("Sepetiniz boş! Ürünlere yönlendiriliyorsunuz.");
+                window.location.href = "product-list.html";
+                return;
+            }
+
+            let total = 0;
+            let totalQty = 0;
+
+            itemList.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                totalQty += item.qty;
+                return `
+                <li class="list-group-item bg-transparent border-bottom border-secondary border-opacity-25 py-3 d-flex align-items-center gap-3">
+                    <div style="width: 50px; height: 50px; flex-shrink:0;">
+                        <img src="${item.img}" class="w-100 h-100 rounded border border-secondary object-fit-cover">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="my-0 text-white small fw-bold text-truncate" style="max-width: 150px;">${item.name}</h6>
+                        <small class="text-muted">${item.qty} adet</small>
+                    </div>
+                    <span class="text-gold fw-bold small">${itemTotal.toLocaleString('tr-TR')}₺</span>
+                </li>`;
+            }).join('');
+
+            totalEl.innerText = total.toLocaleString('tr-TR') + " TL";
+            if(subtotalEl) subtotalEl.innerText = total.toLocaleString('tr-TR') + " TL";
+            countEl.innerText = totalQty;
+        });
+
+        // 3. FORM GÖNDERME
+        document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const captchaInput = document.getElementById("captchaInput");
+            const captchaDisplay = document.getElementById("captcha-display").innerText;
+            
+            let isValid = true;
+
+            // HTML5 Validation
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                isValid = false;
+            }
+
+            // Captcha Kontrolü
+            if (captchaInput.value.toUpperCase() !== captchaDisplay) {
+                document.getElementById("captchaError").style.display = "block";
+                captchaInput.classList.add("is-invalid");
+                isValid = false;
+            } else {
+                document.getElementById("captchaError").style.display = "none";
+                captchaInput.classList.remove("is-invalid");
+                captchaInput.classList.add("is-valid");
+            }
+
+            form.classList.add('was-validated');
+
+            if (isValid) {
+                const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+                const totalAmount = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+                const order = {
+                    id: Math.floor(Math.random() * 900000) + 100000,
+                    date: new Date().toLocaleDateString('tr-TR'),
+                    status: "Hazırlanıyor",
+                    total: totalAmount,
+                    items: cart
+                };
+
+                const existingOrders = JSON.parse(localStorage.getItem("userOrders")) || [];
+                existingOrders.push(order);
+                localStorage.setItem("userOrders", JSON.stringify(existingOrders));
+
+                localStorage.removeItem("shoppingCart");
+
+                alert("Siparişiniz alındı! Teşekkür ederiz.");
+                window.location.href = "orders.html"; // veya customer/orders.html dosya yapına göre
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ödeme Yap | NovaMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i></i>E-TİCARET
+            </a>
+            <span class="text-white"><i class="fas fa-lock me-2"></i>Güvenli Ödeme</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Ödeme Bilgileri</h4>
+                <form id="paymentForm" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Kart Üzerindeki İsim</label>
+                            <input type="text" class="form-control" required placeholder="Ad Soyad">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Kart Numarası</label>
+                            <input type="text" class="form-control" required placeholder="0000 0000 0000 0000" maxlength="19">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Son Kullanma (Ay/Yıl)</label>
+                            <input type="text" class="form-control" required placeholder="MM/YY">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="form-control" required placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">
+                        <i class="fas fa-check-circle me-2"></i>Ödemeyi Tamamla
+                    </button>
+                    <a href="cart.html" class="btn btn-link w-100 mt-2 text-decoration-none text-muted">Sepete Dön</a>
+                </form>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0 fw-bold">Sipariş Özeti</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush mb-3" id="order-summary">
+                            </ul>
+                        <div class="d-flex justify-content-between fw-bold fs-5">
+                            <span>Toplam Tutar:</span>
+                            <span class="text-primary" id="final-total">0 TL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-warning mt-3 small">
+                    <i class="fas fa-info-circle me-1"></i> Bu bir demo projesidir. Gerçek para çekilmez.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. GÜVENLİK KONTROLÜ
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        if (!user) {
+            alert("Ödeme sayfasına erişmek için giriş yapmalısınız.");
+            window.location.href = "login.html";
+        }
+
+        // 2. SEPET VERİLERİNİ ÇEK VE GÖSTER
+        const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+        const summaryList = document.getElementById("order-summary");
+        let totalAmount = 0;
+
+        if (cart.length === 0) {
+            alert("Sepetiniz boş!");
+            window.location.href = "index.html";
+        }
+
+        cart.forEach(item => {
+            const itemTotal = item.price * item.qty;
+            totalAmount += itemTotal;
+            
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between lh-sm";
+            li.innerHTML = `
+                <div>
+                    <h6 class="my-0">${item.name}</h6>
+                    <small class="text-muted">${item.qty} adet</small>
+                </div>
+                <span class="text-muted">${itemTotal.toLocaleString('tr-TR')} TL</span>
+            `;
+            summaryList.appendChild(li);
+        });
+
+        document.getElementById("final-total").innerText = totalAmount.toLocaleString('tr-TR') + " TL";
+
+        // 3. ÖDEMEYİ TAMAMLA VE SİPARİŞ OLUŞTUR
+        document.getElementById("paymentForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Sayfa yenilenmesini engelle
+
+            // Basit form kontrolü (Bootstrap stili eklenebilir ama şimdilik manuel)
+            const inputs = this.querySelectorAll("input");
+            let isValid = true;
+            inputs.forEach(input => {
+                if(!input.value) isValid = false;
+            });
+
+            if(!isValid) {
+                alert("Lütfen tüm alanları doldurunuz.");
+                return;
+            }
+
+            // A) Sipariş Objesi Oluştur
+            const order = {
+                id: Math.floor(Math.random() * 900000) + 100000, // 6 haneli rastgele ID
+                date: new Date().toLocaleDateString('tr-TR'),
+                status: "Hazırlanıyor",
+                total: totalAmount,
+                items: cart
+            };
+
+            // B) Siparişi LocalStorage'a Kaydet ("userOrders" listesine ekle)
+            const existingOrders = JSON.parse(localStorage.getItem("userOrders")) || [];
+            existingOrders.push(order);
+            localStorage.setItem("userOrders", JSON.stringify(existingOrders));
+
+            // C) Sepeti Temizle
+            localStorage.removeItem("shoppingCart");
+
+            // D) Başarı Mesajı ve Yönlendirme
+            alert("Ödeme Başarılı! Siparişiniz alındı.");
+            window.location.href = "customer/orders.html";
+        });
+    </script>
+</body>
+</html>

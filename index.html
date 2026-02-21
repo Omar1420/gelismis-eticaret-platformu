@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>E-TİCARET | Premium Koleksiyon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">E-TİCARET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Keşfet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product-list.html">Koleksiyonlar</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-4">
+                    <a href="cart.html" class="text-white position-relative">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="badge rounded-pill bg-gold text-dark">0</span>
+                    </a>
+                    <div id="user-actions"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="8000">
+    
+    <div class="carousel-indicators mb-4">
+        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active custom-indicator"></button>
+        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1" class="custom-indicator"></button>
+        <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2" class="custom-indicator"></button>
+    </div>
+
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active">
+            <div class="slider-bg-anim" style="background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1600');"></div>
+            <div class="slider-overlay"></div>
+            
+            <div class="carousel-caption centro-caption">
+                <div class="mb-3 fade-down-1">
+                    <span class="px-4 py-2 bg-gold text-black fw-bold rounded-pill text-uppercase tracking-wider small">BÜYÜK SEZON FİNALİ</span>
+                </div>
+                <h1 class="display-2 fw-900 text-white mb-3 fade-down-2">
+                    TÜM KOLEKSİYONDA <br> <span class="gold-gradient-text">%50'YE VARAN İNDİRİM</span>
+                </h1>
+                <p class="lead text-white-50 mb-5 fade-down-3 mw-600 mx-auto">
+                    Teknolojiden modaya, ev yaşamından aksesuara premium ürünlerde yılın en büyük fırsatları başladı.
+                </p>
+                <div class="d-flex justify-content-center gap-3 fade-up">
+                    <a href="product-list.html" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-gold">
+                        FIRSATLARI İNCELE
+                    </a>
+                    <a href="#categories" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill fw-bold">
+                        KATEGORİLER
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="slider-bg-anim" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600');"></div>
+            <div class="slider-overlay"></div>
+            
+            <div class="carousel-caption centro-caption">
+                <div class="mb-3 fade-down-1">
+                    <span class="px-4 py-2 bg-danger text-white fw-bold rounded-pill text-uppercase tracking-wider small">SINIRLI SÜRE</span>
+                </div>
+                <h1 class="display-2 fw-900 text-white mb-3 fade-down-2">
+                    TEKNOLOJİ DEVRİMİ <br> <span class="text-danger">DEV KAMPANYA</span>
+                </h1>
+                <p class="lead text-white-50 mb-5 fade-down-3 mw-600 mx-auto">
+                    En yeni bilgisayar ve donanımlarda geçerli sepette ek <strong>%20 indirim</strong> fırsatını kaçırmayın.
+                </p>
+                <div class="d-flex justify-content-center gap-3 fade-up">
+                    <a href="product-list.html?category=bilgisayar" class="btn btn-danger btn-lg px-5 py-3 rounded-pill fw-bold shadow-danger">
+                        TEKNOLOJİ İNDİRİMLERİ
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="slider-bg-anim" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600');"></div>
+            <div class="slider-overlay"></div>
+            
+            <div class="carousel-caption centro-caption">
+                <div class="mb-3 fade-down-1">
+                    <span class="px-4 py-2 bg-light text-dark fw-bold rounded-pill text-uppercase tracking-wider small">PREMIUM FIRSAT</span>
+                </div>
+                <h1 class="display-2 fw-900 text-white mb-3 fade-down-2">
+                    LÜKS GİYİMDE <br> <span class="gold-gradient-text">SEÇİLİ İNDİRİMLER</span>
+                </h1>
+                <p class="lead text-white-50 mb-5 fade-down-3 mw-600 mx-auto">
+                    Tarzınızı yansıtacak özel parçalar şimdi avantajlı fiyatlarla NovaMarket'te.
+                </p>
+                <div class="d-flex justify-content-center gap-3 fade-up">
+                    <a href="product-list.html?category=ayakkabi" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold text-dark shadow-sm">
+                        MODA KOLEKSİYONU
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev z-3" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon p-5 bg-transparent"></span>
+    </button>
+    <button class="carousel-control-next z-3" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon p-5 bg-transparent"></span>
+    </button>
+</div>
+
+    <section class="py-5" id="categories">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white display-5">Popüler Kategoriler</h2>
+            <div class="gold-line mx-auto"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <a href="product-list.html?category=bilgisayar" class="premium-cat-card">
+                    <div class="cat-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=600" alt="Bilgisayar">
+                    </div>
+                    <div class="cat-content">
+                        <span class="cat-count">12+ Ürün</span>
+                        <h3>BİLGİSAYAR</h3>
+                        <div class="cat-action">Keşfet <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="product-list.html?category=oyun" class="premium-cat-card">
+                    <div class="cat-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600861194942-f883de0dfe96?q=80&w=600" alt="Oyun">
+                    </div>
+                    <div class="cat-content">
+                        <span class="cat-count">5+ Ürün</span>
+                        <h3>OYUN</h3>
+                        <div class="cat-action">Keşfet <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="product-list.html?category=kozmetik" class="premium-cat-card">
+                    <div class="cat-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=600" alt="Kozmetik">
+                    </div>
+                    <div class="cat-content">
+                        <span class="cat-count">8+ Ürün</span>
+                        <h3>KOZMETİK</h3>
+                        <div class="cat-action">Keşfet <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="product-list.html?category=ayakkabi" class="premium-cat-card">
+                    <div class="cat-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600" alt="Ayakkabı">
+                    </div>
+                    <div class="cat-content">
+                        <span class="cat-count">10+ Ürün</span>
+                        <h3>AYAKKABI</h3>
+                        <div class="cat-action">Keşfet <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="py-5 bg-card-dark">
+        <div class="container">
+            <h3 class="fw-bold text-white mb-4"><i class="fas fa-robot gold-text me-2"></i>Sizin İçin Seçtiklerimiz</h3>
+            <div class="row g-4" id="ai-products"></div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

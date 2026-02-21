@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Siparişlerim | E-TİCARET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-deep">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold gold-text" href="../index.html">E-TİCARET</a>
+            <div class="ms-auto">
+                <a href="../product-list.html" class="btn btn-outline-light btn-sm rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i>Alışverişe Dön
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-3">
+                <div class="account-sidebar list-group shadow-lg rounded-4 overflow-hidden">
+                    <div class="p-4 bg-card text-center border-bottom border-secondary border-opacity-25">
+                         <div class="width-80 height-80 rounded-circle bg-dark border border-gold d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-user fa-2x gold-text"></i>
+                        </div>
+                        <h6 class="text-white fw-bold mb-0">Hesabım</h6>
+                    </div>
+                    <a href="profile.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-circle me-3"></i>Profil Bilgileri
+                    </a>
+                    <a href="orders.html" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-box-open me-3"></i>Siparişlerim
+                    </a>
+                    <a href="../favorites.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-heart me-3"></i>Favorilerim
+                    </a>
+                    <a href="#" onclick="logoutUser()" class="list-group-item list-group-item-action text-danger mt-3 border-top border-secondary border-opacity-25">
+                        <i class="fas fa-sign-out-alt me-3"></i>Çıkış Yap
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="card bg-card border border-secondary border-opacity-25 shadow-lg rounded-4">
+                    <div class="card-header bg-transparent border-bottom border-secondary border-opacity-25 py-3">
+                        <h5 class="mb-0 fw-bold text-white"><i class="fas fa-history gold-text me-2"></i>Geçmiş Siparişler</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover align-middle mb-0">
+                                <thead class="bg-black bg-opacity-50">
+                                    <tr>
+                                        <th class="ps-4 py-3 text-gold">Sipariş No</th>
+                                        <th class="py-3 text-gold">Tarih</th>
+                                        <th class="py-3 text-gold">Toplam Tutar</th>
+                                        <th class="py-3 text-gold">Durum</th>
+                                        <th class="text-end pe-4 py-3 text-gold">Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders-list">
+                                    </tbody>
+                            </table>
+                        </div>
+                        <div id="no-orders" class="text-center py-5" style="display:none;">
+                            <i class="fas fa-shopping-basket fa-3x text-muted mb-3 opacity-50"></i>
+                            <p class="text-white">Henüz siparişiniz bulunmuyor.</p>
+                            <a href="../product-list.html" class="btn btn-sm btn-primary rounded-pill">Alışverişe Başla</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        if (!user) { window.location.href = "../login.html"; return; }
+
+        const orders = JSON.parse(localStorage.getItem("userOrders")) || [];
+        const tbody = document.getElementById("orders-list");
+        const noOrdersMsg = document.getElementById("no-orders");
+
+        if (orders.length === 0) {
+            noOrdersMsg.style.display = "block";
+            return;
+        }
+
+        // Siparişleri tersten sırala (En yeni en üstte)
+        orders.reverse().forEach(order => {
+            // Duruma göre renk belirle
+            let statusClass = "bg-secondary";
+            if(order.status === "Hazırlanıyor") statusClass = "bg-warning text-dark";
+            if(order.status === "Tamamlandı") statusClass = "bg-success";
+            if(order.status === "İptal") statusClass = "bg-danger";
+
+            const row = `
+                <tr>
+                    <td class="ps-4 fw-bold text-white">#${order.id}</td>
+                    <td class="text-muted small">${order.date}</td>
+                    <td class="text-white fw-bold">${order.total.toLocaleString('tr-TR')} TL</td>
+                    <td><span class="badge ${statusClass} rounded-pill px-3">${order.status}</span></td>
+                    <td class="text-end pe-4">
+                        <button class="btn btn-sm btn-outline-light rounded-pill" onclick="showDetails('${order.items.map(i=>i.name).join(', ')}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    });
+
+    function showDetails(items) {
+        alert("Sipariş İçeriği:\n" + items);
+    }
+    
+    function logoutUser() {
+        localStorage.removeItem("currentUser");
+        window.location.href = "../index.html";
+    }
+    </script>
+</body>
+</html>

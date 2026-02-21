@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | E-TİCARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand">E-TİCARET</div>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="dashboard.html" class="nav-link active"><i class="fas fa-chart-line"></i> Özet Rapor</a></li>
+            <li class="nav-item"><a href="products.html" class="nav-link"><i class="fas fa-box"></i> Ürün Yönetimi</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link"><i class="fas fa-plus-circle"></i> Ürün Ekle</a></li>
+            <li class="nav-item"><a href="orders.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Siparişler</a></li>
+            <li class="nav-item mt-5"><a href="../index.html" class="nav-link text-danger fw-bold"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h2 class="fw-bold text-white">Genel Bakış</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-dark border border-secondary"><i class="fas fa-bell text-gold"></i></button>
+                <div class="d-flex align-items-center gap-2 ms-2">
+                    <div class="bg-secondary rounded-circle" style="width: 35px; height: 35px;"></div>
+                    <span class="small fw-bold">Admin</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted small fw-bold mb-1">TOPLAM CİRO</p>
+                            <h3 class="text-white fw-bold mb-0" id="stat-revenue">...</h3>
+                        </div>
+                        <div class="bg-dark p-3 rounded-circle border border-secondary">
+                            <i class="fas fa-wallet fa-2x text-gold"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted small fw-bold mb-1">TOPLAM SİPARİŞ</p>
+                            <h3 class="text-white fw-bold mb-0" id="stat-orders">...</h3>
+                        </div>
+                        <div class="bg-dark p-3 rounded-circle border border-secondary">
+                            <i class="fas fa-shopping-bag fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted small fw-bold mb-1">AKTİF MÜŞTERİ</p>
+                            <h3 class="text-white fw-bold mb-0" id="stat-users">...</h3>
+                        </div>
+                        <div class="bg-dark p-3 rounded-circle border border-secondary">
+                            <i class="fas fa-users fa-2x text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title">Satış Analizi</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="salesChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title">Kategori Dağılımı</h5>
+                    </div>
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <canvas id="pieChart" style="max-height: 250px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        // Koyu Tema Uyumlu Grafikler
+        Chart.defaults.color = '#888';
+        Chart.defaults.borderColor = '#2d3035';
+
+        const ctx1 = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
+                datasets: [{
+                    label: 'Günlük Satış (TL)',
+                    data: [12000, 19000, 15000, 25000, 22000, 30000, 35000],
+                    borderColor: '#dbac33',
+                    backgroundColor: 'rgba(219, 172, 51, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { plugins: { legend: { display: false } } }
+        });
+
+        const ctx2 = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Teknoloji', 'Giyim', 'Ev', 'Kozmetik'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: ['#dbac33', '#0d6efd', '#198754', '#dc3545'],
+                    borderWidth: 0
+                }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+    </script>
+</body>
+<body>
+    <button class="admin-toggle-btn shadow" onclick="document.querySelector('.sidebar').classList.toggle('active')">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    ```
+
+### 4. Adım: HTML Dosyalarına Bağlantı Yap
+
+Son olarak, **tüm HTML dosyalarının (Frontend)** `<head>` kısmına `responsive.css` dosyasını `style.css`'ten **SONRA** ekle. Sıralama önemli!
+
+```html
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</html>

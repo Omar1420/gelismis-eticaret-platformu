@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | E-TİCARET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0 login-section">
+            
+            <div class="col-lg-7 d-none d-lg-flex align-items-center justify-content-center login-image position-relative">
+                <div class="overlay-dark"></div>
+                <div class="z-2 text-center text-white p-5 fade-in-up">
+                    <h1 class="display-1 fw-bold mb-3 tracking-wide">GELECEĞE <br><span class="gold-text">GİRİŞ YAP.</span></h1>
+                    <p class="lead opacity-75 mb-4">E-TİCARET ayrıcalıklar dünyasına hoş geldiniz.</p>
+                    <a href="index.html" class="btn btn-outline-light rounded-pill px-4">Mağazaya Dön</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 d-flex align-items-center justify-content-center bg-deep position-relative">
+                <div class="glow-effect"></div>
+
+                <div class="form-box w-100 p-5 fade-in">
+                    <div class="text-center mb-5">
+                        <a href="index.html" class="text-decoration-none">
+                            <h2 class="display-5 fw-bold gold-text mb-2">E-TİCARET</h2>
+                        </a>
+                        <p class="text-muted">Hesabınıza güvenle giriş yapın</p>
+                    </div>
+
+                    <form id="loginForm" novalidate>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                            <label for="email">E-Posta Adresi</label>
+                        </div>
+                        
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="password" placeholder="Şifre" required minlength="6">
+                            <label for="password">Şifre</label>
+                        </div>
+
+                        <div class="mb-4 p-3 rounded-4 border border-secondary border-opacity-25 bg-card">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="small text-white fw-bold"><i class="fas fa-shield-alt gold-text me-2"></i>Güvenlik Kontrolü</span>
+                                <a href="#" onclick="refreshCaptcha()" class="text-gold text-decoration-none small hover-underline">
+                                    <i class="fas fa-sync-alt me-1"></i>Yenile
+                                </a>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div id="captcha-display" class="captcha-box flex-grow-1 text-center text-white fw-bold fs-4 border border-secondary border-opacity-25 rounded-3 py-2 user-select-none" style="letter-spacing: 5px; background: rgba(255,255,255,0.05);">
+                                    </div>
+                                <input type="text" class="form-control text-center fs-5 fw-bold" id="captchaInput" placeholder="KOD" required style="width: 100px; letter-spacing: 2px;">
+                            </div>
+                            <div class="invalid-feedback d-block mt-2 text-center" id="captchaError" style="display:none !important">
+                                <i class="fas fa-exclamation-circle me-1"></i>Güvenlik kodu hatalı!
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-3 fs-5 rounded-3 shadow-gold mb-4">
+                            Giriş Yap <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+
+                        <div class="demo-info p-3 rounded-3 bg-dark border border-secondary border-opacity-25 mb-4">
+                            <h6 class="gold-text small fw-bold mb-2 text-uppercase"><i class="fas fa-info-circle me-2"></i>Demo Hesaplar:</h6>
+                            <div class="d-flex justify-content-between text-muted small mb-1">
+                                <span><i class="fas fa-user-shield me-2"></i>Admin:</span>
+                                <span class="text-white font-monospace">admin@nova.com / 123456</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small">
+                                <span><i class="fas fa-user me-2"></i>Müşteri:</span>
+                                <span class="text-white font-monospace">user@nova.com / 123456</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <span class="text-muted">Hesabınız yok mu?</span>
+                            <a href="register.html" class="gold-text fw-bold text-decoration-none ms-1 hover-underline">Hemen Kayıt Ol</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/captcha.js"></script>
+    <script src="js/validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+/* NOVA ADMIN - PREMIUM DASHBOARD CSS */
+:root {
+    --bg-deep: #0c0c0c;
+    --bg-card: #16181a;
+    --gold: #dbac33;
+    --text-main: #f4f1ea;
+    --border-color: #2d3035;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+}
+
+/* 1. SIDEBAR (YAN MENÜ) */
+.sidebar {
+    background: #111;
+    border-right: 1px solid var(--border-color);
+    min-height: 100vh;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar .brand {
+    color: var(--gold);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.sidebar .nav-link {
+    color: #888;
+    padding: 15px 25px;
+    font-weight: 500;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.02);
+}
+
+.sidebar .nav-link.active {
+    color: var(--gold);
+    background: linear-gradient(90deg, rgba(219, 172, 51, 0.1) 0%, transparent 100%);
+    border-left-color: var(--gold);
+}
+
+.sidebar .nav-link i {
+    width: 25px;
+}
+
+/* 2. ANA İÇERİK ALANI */
+.main-content {
+    margin-left: 260px; /* Sidebar genişliği kadar boşluk */
+    padding: 30px;
+}
+
+/* 3. KARTLAR VE KUTULAR */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px;
+}
+
+.card-title {
+    color: #fff;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* 4. TABLOLAR */
+.table {
+    color: #ccc;
+    border-color: var(--border-color);
+}
+
+.table thead th {
+    background-color: #0f1011;
+    color: var(--gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    padding: 15px;
+}
+
+.table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255,255,255,0.02);
+}
+
+/* 5. FORMLAR */
+.form-control, .form-select {
+    background-color: #0f1011;
+    border: 1px solid var(--border-color);
+    color: #fff;
+    padding: 12px;
+}
+
+.form-control:focus {
+    background-color: #0f1011;
+    border-color: var(--gold);
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(219, 172, 51, 0.15);
+}
+
+/* 6. BUTONLAR */
+.btn-primary, .btn-success {
+    background-color: var(--gold);
+    border: none;
+    color: #000;
+    font-weight: 700;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: #c59620;
+    color: #000;
+}
+
+.btn-outline-danger {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+}
+
+.btn-outline-danger:hover {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+/* --- Admin Form İyileştirmeleri --- */
+
+/* Input Focus Efekti */
+.focus-gold:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 0.25rem rgba(219, 172, 51, 0.15) !important;
+    background-color: #1a1c1e !important; /* Odaklanınca hafif açıl */
+    color: white !important;
+}
+
+/* Input Group İkonları */
+.input-group-text {
+    background-color: #212529 !important;
+    border-color: #2d3035 !important;
+    color: #6c757d;
+}
+
+/* Kategori Başlıkları */
+.text-gold {
+    color: var(--gold) !important;
+}
+
+/* Buton Gölgesi */
+.shadow-gold {
+    box-shadow: 0 4px 15px rgba(219, 172, 51, 0.3);
+    transition: 0.3s;
+}
+
+.shadow-gold:hover {
+    box-shadow: 0 6px 20px rgba(219, 172, 51, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Select Oku Rengi (Tarayıcı varsayılanını ezmek için) */
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dbac33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+/* --- ADMIN MOBILE RESPONSIVE --- */
+
+@media (max-width: 991px) {
+    /* Sidebar'ı Gizle */
+    .sidebar {
+        left: -260px; /* Ekran dışına it */
+        transition: 0.3s ease;
+        z-index: 1050; /* En üstte olsun */
+    }
+
+    /* Sidebar Aktif Olduğunda (JS ile eklenecek class) */
+    .sidebar.active {
+        left: 0;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* Ana İçeriği Genişlet */
+    .main-content {
+        margin-left: 0 !important;
+        padding: 20px !important;
+    }
+
+    /* Toggle Butonu (Mobilde Menüyü Açmak İçin) */
+    .admin-toggle-btn {
+        display: block !important; /* Mobilde görünür yap */
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1060;
+        background: var(--gold);
+        border: none;
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        color: black;
+    }
+    
+    /* Tablo Taşmalarını Önle */
+    .table-responsive {
+        border: 0;
+    }
+}
+
+/* Masaüstünde Toggle Butonunu Gizle */
+.admin-toggle-btn {
+    display: none;
+}

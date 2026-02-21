@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Detayı | E-TİCARET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-deep">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold gold-text" href="index.html">E-TİCARET</a>
+            <div class="ms-auto d-flex align-items-center gap-4">
+                <a href="product-list.html" class="nav-link text-white d-none d-md-block">
+                    <i class="fas fa-arrow-left me-2"></i>Koleksiyona Dön
+                </a>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="cart.html" class="text-white position-relative text-decoration-none">
+                        <i class="fas fa-shopping-bag fa-lg"></i>
+                        <span id="cart-count" class="badge rounded-pill bg-gold text-dark">0</span>
+                    </a>
+                    <div id="user-actions"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+        <div class="container">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted small">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="product-list.html" class="text-decoration-none text-muted small">Koleksiyonlar</a></li>
+                    <li class="breadcrumb-item active gold-text small fw-bold" aria-current="page" id="detail-category">KATEGORİ</li>
+                </ol>
+            </nav>
+
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="detail-image-wrapper p-5 rounded-5 border border-secondary border-opacity-10 bg-card shadow-lg position-relative overflow-hidden group-hover">
+                        <div class="badge bg-gold text-dark position-absolute top-0 start-0 m-4 px-3 py-2 rounded-pill fw-bold z-2">YENİ SEZON</div>
+                        <img id="detail-img" src="" alt="Ürün" class="img-fluid rounded-4 shadow-sm d-block mx-auto hover-zoom" style="max-height: 500px; object-fit: contain;">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 ps-lg-5">
+                    
+                    <h1 class="display-4 fw-bold text-white mb-2" id="detail-title">Ürün Yükleniyor...</h1>
+                    
+                    <div class="mb-4 d-flex align-items-center gap-2">
+                        <div class="text-warning small">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-muted small border-start border-secondary ps-2 ms-1">4.8 (120+ Değerlendirme)</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <h2 class="display-5 fw-bold gold-text mb-0" id="detail-price">0 TL</h2>
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-2 rounded-pill">Stokta Mevcut</span>
+                    </div>
+
+                    <p class="lead text-light opacity-75 mb-5" id="detail-desc" style="font-size: 1.1rem; line-height: 1.8;">
+                        Ürün açıklaması yükleniyor...
+                    </p>
+
+                    <div class="d-flex gap-3 mb-5">
+                        <button id="add-btn" class="btn btn-primary btn-lg rounded-pill px-5 flex-grow-1 py-3 fw-bold shadow-gold">
+                            <i class="fas fa-shopping-bag me-2"></i>Sepete Ekle
+                        </button>
+                        <button id="fav-btn" class="btn btn-outline-light btn-lg rounded-circle d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+                            <i id="fav-icon" class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="row g-4 pt-4 border-top border-secondary border-opacity-25">
+                        <div class="col-4 text-center">
+                            <div class="mb-2"><i class="fas fa-shipping-fast fa-2x gold-text"></i></div>
+                            <span class="text-white small fw-bold">Hızlı Kargo</span>
+                            <br><span class="text-muted x-small">24 Saatte Kargoda</span>
+                        </div>
+                        <div class="col-4 text-center border-start border-end border-secondary border-opacity-25">
+                            <div class="mb-2"><i class="fas fa-shield-alt fa-2x gold-text"></i></div>
+                            <span class="text-white small fw-bold">Güvenli Ödeme</span>
+                            <br><span class="text-muted x-small">256-Bit SSL</span>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="mb-2"><i class="fas fa-undo fa-2x gold-text"></i></div>
+                            <span class="text-white small fw-bold">Kolay İade</span>
+                            <br><span class="text-muted x-small">14 Gün Garantisi</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-card border-top border-secondary border-opacity-10">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold text-white mb-0">Bunları da Beğenebilirsiniz</h3>
+                <a href="product-list.html" class="btn btn-link text-gold text-decoration-none">Tümünü Gör <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row g-4" id="similar-products">
+                </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+/* --- TARAYICI ÖLÇEKLEME KİLİDİ --- */
+html {
+    /* Tarayıcı ne olursa olsun temel yazı boyutu 16px olsun */
+    font-size: 16px !important; 
+    /* Yatay kaymayı engelle */
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    /* Sayfa çok geniş ekranlarda dağılmasın, ortalansın */
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* Slider'ın taşmasını engelleyen ekstra güvenlik */
+.carousel-inner, .carousel-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+/* Tüm mobil cihazlar için zorunlu ayarlar */
+@media only screen and (max-width: 991px) {
+    
+    /* 1. Sayfanın Sağa-Sola Kaymasını Engelle */
+    html, body {
+        width: 100%;
+        overflow-x: hidden !important;
+        position: relative;
+    }
+
+    /* 2. Slider Kapsayıcısını Ekrana Sığdır */
+    .carousel-item {
+        height: 100vh !important;
+        min-height: 500px;
+    }
+
+    /* 3. Slider İçindeki Siyah Kutuyu Düzenle */
+    .centro-caption {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Tam merkeze kilitle */
+        
+        width: 90% !important; /* Ekranın %90'ını kapla */
+        max-width: 90% !important;
+        
+        padding: 20px !important;
+        margin: 0 !important;
+        
+        background: rgba(0, 0, 0, 0.75) !important; /* Arka planı koyulaştır */
+        border-radius: 15px !important;
+        border: 1px solid rgba(255, 215, 0, 0.5) !important; /* Altın çerçeve */
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* 4. Devasa Başlıkları Küçült (Burası Çok Önemli) */
+    .centro-caption h1.display-2 {
+        font-size: 1.5rem !important; /* Yazı boyutunu mobilde 24px'e indir */
+        line-height: 1.3 !important;
+        text-align: center !important;
+        margin-bottom: 15px !important;
+        white-space: normal !important; /* Yazı taşarsa alt satıra geçsin */
+    }
+
+    /* 5. Alt Açıklama Metnini Ayarla */
+    .centro-caption p.lead {
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+        margin-bottom: 20px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* 6. Butonları Alt Alta Diz */
+    .centro-caption .d-flex {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .centro-caption .btn {
+        width: 100% !important;
+        display: block !important;
+        font-size: 1rem !important;
+        padding: 12px 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 7. Rozetleri (Badge) Küçült */
+    .centro-caption .badge {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+        margin-bottom: 10px !important;
+        display: inline-block !important;
+    }
+    
+    /* Navbar Mobilde Siyah Olsun */
+    .navbar-collapse {
+        background: #000 !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        padding: 15px;
+    }
+}
